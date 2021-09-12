@@ -1,6 +1,6 @@
 # currency_exchange
 
-A new Flutter project.
+currency_exchange
 
 ## Getting Started
 
