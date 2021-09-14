@@ -40,4 +40,6 @@ class AppCubit extends Cubit<AppStates> {
     to = temp;
     emit(AppchangeState());
   }
+  double amout = 0.0;
+
 }

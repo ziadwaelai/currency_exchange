@@ -60,6 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   onPressed: () {
                     AppCubit.get(context).changeCurrency();
+                    result(
+                        from: "${AppCubit.get(context).from}",
+                        to: "${AppCubit.get(context).to}",
+                        amout: AppCubit.get(context).amout);
                   }),
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -105,15 +109,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.w500),
                   onChanged: (value) {
                     setState(() {});
-                    double amout = 0.0;
                     if (!value.isEmpty) {
-                      amout = double.parse(value);
+                      AppCubit.get(context).amout = double.parse(value);
                     }
 
                     result(
                         from: "${AppCubit.get(context).from}",
                         to: "${AppCubit.get(context).to}",
-                        amout: amout);
+                        amout: AppCubit.get(context).amout);
                   },
                 ),
               ),
@@ -136,14 +139,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Data Proved at ",
+                      "Data Updated at ",
                       style: TextStyle(
                           color: Color.fromRGBO(76, 205, 203, 1),
                           fontSize: 10,
                           fontWeight: FontWeight.w300),
                     ),
                     Text(
-                      "$date",
+                      " $date",
                       style: TextStyle(
                           color: Color.fromRGBO(76, 205, 203, 1),
                           fontSize: 10,

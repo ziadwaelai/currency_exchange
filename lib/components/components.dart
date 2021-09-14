@@ -3,6 +3,7 @@ import 'package:currency_exchange/screens/selectedPage.dart';
 import 'package:currency_exchange/shered/api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 Map<String, dynamic> currency = {};
 
@@ -17,8 +18,7 @@ void getCurrency() {
 double results = 0;
 String date = '2021-09-12';
 
-double result(
-    {@required String from, @required String to,  double amout}) {
+double result({@required String from, @required String to, double amout}) {
   double fromm = currency['$from'];
   double too = currency['$to'];
   too = amout * too / fromm;
@@ -67,15 +67,50 @@ Widget contryCodeSelection(
 ) {
   return Container(
     child: GestureDetector(
-      child: Text(
-        "$text",
-        style: TextStyle(
-            color: Color.fromRGBO(76, 205, 203, 1),
-            fontSize: 40,
-            fontWeight: FontWeight.w700),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Container(
+              child: CachedNetworkImage(
+                width: 40,
+                height: 40,
+                imageUrl:
+                    'https://www.countryflags.io/${text.substring(0, 2).toUpperCase()}/shiny/64.png',
+                imageBuilder: (context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                placeholder: (context, url) => Container(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Text(
+            "${text == 'ILS' ? 'Occupation Power' : text}",
+            style: TextStyle(
+                color: text == 'ILS'
+                    ? Colors.red
+                    : Color.fromRGBO(76, 205, 203, 1),
+                fontSize: 25,
+                fontWeight: FontWeight.w600),
+          ),
+          ////////
+        ],
       ),
       onTap: () {
         AppCubit.get(context).changeText(text, context);
+        result(
+            from: "${AppCubit.get(context).from}",
+            to: "${AppCubit.get(context).to}",
+            amout: AppCubit.get(context).amout);
       },
     ),
   );
