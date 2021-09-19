@@ -111,6 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     setState(() {});
                     if (!value.isEmpty) {
                       AppCubit.get(context).amout = double.parse(value);
+                    }  else if (value.isEmpty) {
+                      AppCubit.get(context).amout = 0;
                     }
 
                     result(

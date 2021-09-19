@@ -19,10 +19,18 @@ double results = 0;
 String date = '2021-09-12';
 
 double result({@required String from, @required String to, double amout}) {
-  double fromm = currency['$from'];
-  double too = currency['$to'];
-  too = amout * too / fromm;
-  results = too;
+  double fromm = from == 'EUR' ? 0 : currency['$from'];
+  double too = to == 'EUR' ? 0 : currency['$to'];
+  if (from == 'EUR') {
+    too = too * amout;
+    results = too;
+  } else if (to == "EUR") {
+    too = amout / fromm;
+    results = too;
+  } else {
+    too = amout * too / fromm;
+    results = too;
+  }
 
   return too;
 }
