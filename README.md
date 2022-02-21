@@ -2,6 +2,9 @@
 
 currency_exchange
 
+![capture_20220221135343172](https://user-images.githubusercontent.com/73315485/154950985-7fabf6f5-5c06-407d-9b67-902577372543.png)
+![capture_20220221135426292](https://user-images.githubusercontent.com/73315485/154951019-f1d965af-23f4-48e1-883c-df6a759f4dde.png)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
