@@ -81,10 +81,12 @@ Widget contryCodeSelection(
             padding: const EdgeInsets.only(left: 40),
             child: Container(
               child: CachedNetworkImage(
-                width: 40,
-                height: 40,
+                width: 48,
+                height: 36,
+                // imageUrl:
+                //     'https://www.countryflags.io/${text.substring(0, 2).toUpperCase()}/shiny/64.png',
                 imageUrl:
-                    'https://www.countryflags.io/${text.substring(0, 2).toUpperCase()}/shiny/64.png',
+                    'https://flagcdn.com/w80/${text.substring(0, 2).toLowerCase()}.png',
                 imageBuilder: (context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
